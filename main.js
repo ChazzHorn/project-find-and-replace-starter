@@ -46,7 +46,7 @@ replaceAllButton.addEventListener('click', function(){
 
                 let result = textInsideDiv.replace(findInputValue,replaceInputValue)
 
-                textInsideDiv = result
+                nodeListElements[cellfinder].innerHTML = result
 
                 console.log(textInsideDiv)
             }
