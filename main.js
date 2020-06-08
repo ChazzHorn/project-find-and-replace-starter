@@ -4,6 +4,7 @@
 const findInput = document.querySelector(".find-input")
 const replaceInput = document.querySelector(".replace-input")
 const replaceAllButton = document.querySelector(".replace-all-button")
+const spanTag = document.querySelector(".number-of-replacements")
 
 // The following variable holds your OUTER ARRAY of row elements.
 // Later you will need an OUTER LOOP to loop over the individual elements within
@@ -29,31 +30,36 @@ function getCellElements (currentRowElement) {
 replaceAllButton.addEventListener('click', function(){
     let findInputValue= findInput.value
     let replaceInputValue= replaceInput.value
-
+    let howManyReplaced= 1
     for (rowfinder=0; rowfinder<rowElements.length; rowfinder++){
 
         let nodeListElements = getCellElements(rowElements[rowfinder])
-            console.log(nodeListElements)
+            // console.log(nodeListElements)
 
         for(cellfinder=0; cellfinder<nodeListElements.length; cellfinder++){
 
             let currentCell= nodeListElements[cellfinder]
             let textInsideDiv = currentCell.innerHTML
 
-            console.log(textInsideDiv, findInputValue)
-
+            // console.log(textInsideDiv, findInputValue)
+            
             if(textInsideDiv.includes(findInputValue)){
 
                 let result = textInsideDiv.replace(findInputValue,replaceInputValue)
-
+                
                 nodeListElements[cellfinder].innerHTML = result
 
-                console.log(textInsideDiv)
+                // console.log(textInsideDiv)
+
+               howManyReplaced++ 
+                
             }
             
             // console.log(replaceInput)
             }
     }
+    console.log(howManyReplaced)
+    spanTag.innerText=howManyReplaced
     // console.log('I\'m Workin')
 })
 
